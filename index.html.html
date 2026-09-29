@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Grace ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #fff1e6, #ffe0d2, #ffd6c9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #6b3b32;
+        }
+
+        /* Soft background glow */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 180, 160, 0.25);
+            border-radius: 50%;
+            filter: blur(80px);
+            top: -150px;
+            left: -150px;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            background: rgba(255, 210, 150, 0.25);
+            border-radius: 50%;
+            filter: blur(80px);
+            bottom: -150px;
+            right: -120px;
+        }
+
+        .card {
+            position: relative;
+            z-index: 2;
+            width: min(90%, 650px);
+            padding: 45px 35px;
+            text-align: center;
+            background: rgba(255, 250, 247, 0.88);
+            border-radius: 30px;
+            box-shadow:
+                0 20px 50px rgba(117, 62, 45, 0.15),
+                0 5px 15px rgba(117, 62, 45, 0.08);
+            backdrop-filter: blur(10px);
+            animation: appear 1.2s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .cake {
+            font-size: 60px;
+            animation: float 3s ease-in-out infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(35px, 7vw, 58px);
+            color: #c45d4b;
+            margin-bottom: 20px;
+        }
+
+        .heart {
+            color: #e85d75;
+        }
+
+        .message {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #70483f;
+            margin: 0 auto 30px;
+            max-width: 540px;
+        }
+
+        /* Surprise button */
+        .surprise-btn {
+            border: none;
+            outline: none;
+            padding: 16px 34px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #e87961, #d95768);
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(217, 87, 104, 0.3);
+            transition: all 0.25s ease;
+        }
+
+        .surprise-btn:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 12px 25px rgba(217, 87, 104, 0.4);
+        }
+
+        .surprise-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* Surprise message */
+        .surprise {
+            display: none;
+            margin-top: 25px;
+            animation: surpriseIn 0.8s ease;
+        }
+
+        .surprise.show {
+            display: block;
+        }
+
+        @keyframes surpriseIn {
+            from {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .surprise h2 {
+            font-family: Georgia, serif;
+            color: #c44e5d;
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .surprise p {
+            font-size: 18px;
+            color: #805044;
+        }
+
+        /* Floating hearts */
+        .floating-heart {
+            position: fixed;
+            bottom: -30px;
+            font-size: 20px;
+            opacity: 0;
+            pointer-events: none;
+            animation: floatHeart 7s linear forwards;
+            z-index: 1;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.7;
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 16px;
+            top: -20px;
+            z-index: 999;
+            pointer-events: none;
+            animation: confettiFall linear forwards;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Small footer */
+        .footer {
+            margin-top: 22px;
+            font-size: 13px;
+            color: #a4776d;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 35px 22px;
+            }
+
+            .message {
+                font-size: 15px;
+                line-height: 1.7;
+            }
+
+            .cake {
+                font-size: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="cake">🎂</div>
+
+        <h1>
+            Happy Birthday, <span class="heart">GRACE ❤️</span>
+        </h1>
+
+        <p class="message">
+            Happy Birthday, my love. ❤️ I’m so grateful to have you in my life.
+            You make my days brighter and my heart happier just by being you.
+            I hope your special day is filled with love, happiness, and everything
+            you deserve. I love you so much, and I’m excited to make more beautiful
+            memories with you. ❤️🎂
+        </p>
+
+        <button class="surprise-btn" onclick="celebrate()">
+            🎁 Click for a Surprise 🎁
+        </button>
+
+        <div class="surprise" id="surprise">
+            <h2>✨ Surprise! ✨</h2>
+            <p>
+                You are my favorite person and my favorite part of every day. ❤️
+            </p>
+            <p style="margin-top: 8px;">
+                Happy Birthday, my love! 🥰🎂💕
+            </p>
+        </div>
+
+        <div class="footer">
+            Made with all my love ❤️
+        </div>
+
+    </div>
+
+    <script>
+        // Create floating hearts in the background
+        function createHeart() {
+            const heart = document.createElement("div");
+
+            heart.className = "floating-heart";
+
+            const hearts = ["❤️", "💕", "💗", "💖", "💓"];
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (15 + Math.random() * 18) + "px";
+            heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+
+        setInterval(createHeart, 900);
+
+
+        // Birthday celebration
+        function celebrate() {
+
+            // Show surprise
+            document.getElementById("surprise").classList.add("show");
+
+            // Change button text
+            const button = document.querySelector(".surprise-btn");
+            button.innerHTML = "❤️ Happy Birthday, My Love! ❤️";
+
+            // Create confetti
+            for (let i = 0; i < 180; i++) {
+                createConfetti(i);
+            }
+
+            // Extra hearts
+            for (let i = 0; i < 25; i++) {
+                setTimeout(createHeart, i * 60);
+            }
+        }
+
+
+        function createConfetti(index) {
+
+            const confetti = document.createElement("div");
+
+            confetti.className = "confetti";
+
+            const colors = [
+                "#e85d75",
+                "#f4a261",
+                "#e9c46a",
+                "#e76f51",
+                "#ffb4a2",
+                "#cdb4db",
+                "#90dbf4"
+            ];
+
+            confetti.style.background =
+                colors[Math.floor(Math.random() * colors.length)];
+
+            confetti.style.left = Math.random() * 100 + "vw";
+
+            confetti.style.width =
+                (6 + Math.random() * 8) + "px";
+
+            confetti.style.height =
+                (8 + Math.random() * 12) + "px";
+
+            confetti.style.borderRadius =
+                Math.random() > 0.5 ? "50%" : "2px";
+
+            confetti.style.animationDuration =
+                (2.5 + Math.random() * 3) + "s";
+
+            confetti.style.animationDelay =
+                (Math.random() * 0.8) + "s";
+
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 6000);
+        }
+    </script>
+
+</body>
+</html>
